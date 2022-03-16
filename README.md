@@ -14,7 +14,7 @@ Implementation of "Image Perturbation-Based Deep Learning for Face Recognition U
 
 ![](figures/algorithm.jpg)
 
-To get DCC-transformed image, put the image into *sample.jpg* and run this code
+To get a DCC-transformed image, put the image into *sample.jpg* and run this code:
 
     python sample.py
     
