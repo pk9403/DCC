@@ -4,6 +4,7 @@ import tensorflow as tf
 import numpy as np
 import sklearn
 import cv2
+import argparse
 
 from sklearn.datasets import fetch_lfw_people
 from sklearn.model_selection import train_test_split
@@ -14,11 +15,16 @@ from model import create_model
 HIGHT = 218
 WIDTH = 178
 CHANNEL = 1
-a, b, r = 4, 4, 64
-EPOCHS = 50
 
 gpus = tf.config.experimental.list_physical_devices('GPU')
 tf.config.experimental.set_memory_growth(gpus[0], True)
+
+parser = argparse.ArgumentParser()
+parser.add_argument("--a", type=int, default=4, help='number of row blocks')
+parser.add_argument("--b", type=int, default=4, help='number of column blocks')
+parser.add_argument("--r", type=int, default=64, help='number of remaining coefficients')
+parser.add_argument("--epochs", type=int, default=50, help='number of epochs')
+args = parser.parse_args()
 
 # Load Data
 lfw_dataset = sklearn.datasets.fetch_lfw_people(min_faces_per_person=100)
@@ -55,14 +61,14 @@ for k in range(x_train.shape[0]):
 # DCC to training data  
 x_train_dct = np.zeros(x_train.shape)
 for k in range(x_train.shape[0]):
-    x_train_dct[k] = transform(x_train[k], a, b, r)
+    x_train_dct[k] = transform(x_train[k], args.a, args.b, args.r)
 
 # Create model
 model = create_model(input_shape=(HIGHT, WIDTH, CHANNEL), num_class=n_classes)
 
 # Train
 with tf.device('/GPU:0'):
-    hist = model.fit(x_train_dct, y_train, epochs=EPOCHS, validation_data=(x_test, y_test))
+    hist = model.fit(x_train_dct, y_train, epochs=args.epochs, validation_data=(x_test, y_test))
 
 # Test
 y_pred = model.predict(x_test)
