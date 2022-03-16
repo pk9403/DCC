@@ -14,7 +14,7 @@ from model import create_model
 HIGHT = 218
 WIDTH = 178
 CHANNEL = 1
-a, b, r = 4, 4, 218*178
+a, b, r = 4, 4, 64
 EPOCHS = 50
 
 gpus = tf.config.experimental.list_physical_devices('GPU')
