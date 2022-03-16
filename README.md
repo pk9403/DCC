@@ -18,7 +18,7 @@ To get a DCC-transformed image, put the image into *sample.jpg* and run this cod
 
     python sample.py
     
-If you want to change parameters, then run this code:
+If you want to change parameters, then you can do like:
 
     python sample.py --a=4 --b=6 --r=128
     
@@ -26,7 +26,7 @@ To train face recognition tasks, run this code:
 
     python train.py
 
-If you want to change parameters, then run this code:
+If you want to change parameters, then you can do like:
 
     python train.py --a=4 --b=6 --r=128 --epochs=20
 
