@@ -1,5 +1,5 @@
 ## Discrete Cosine Transform Coefficient Cutting Methods (DCC) 
-Implementation of "Image Perturbation-Based Deep Learning for Face Recognition Utilizing Discrete Cosine Transform" by Jaehun Park and Kwangsu Kim
+Implementation of "[**Image Perturbation-Based Deep Learning for Face Recognition Utilizing Discrete Cosine Transform**](https://www.mdpi.com/2079-9292/11/1/25)" by Jaehun Park and Kwangsu Kim.
 
 ![](figures/overview.jpg)
 
